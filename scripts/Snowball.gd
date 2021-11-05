@@ -65,6 +65,7 @@ func resize():
 
 func look_follow(state, current_transform, target_position):
 	var target_dir = (target_position - current_transform.origin).normalized()
+	target_dir.y = 0
 	
 	if should_move:
 		state.set_linear_velocity(target_dir * SPEED)

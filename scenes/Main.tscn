@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://models/treePineSnowRound.obj" type="ArrayMesh" id=2]
@@ -22,6 +22,32 @@ extents = Vector3( 30, 1, 30 )
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 60, 2, 60 )
 
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.443047, 1, 1.98357 )
+
+[sub_resource type="CylinderShape" id=12]
+radius = 0.7
+height = 1.0
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.3, 0.18, 0.15 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.18, 0.34, 0.18 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.18, 0.24, 0.18 )
+
+[sub_resource type="CylinderShape" id=8]
+radius = 0.18
+height = 0.38
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.18, 0.34, 0.18 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.23, 0.32, 0.19 )
+
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -40,21 +66,19 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.971446, 0.237262, 0, -0.237262, 0.971446, 0, 0.897358, 4.63682 )
+transform = Transform( 1, 0, 0, 0, 0.988417, 0.151761, 0, -0.151761, 0.988417, 0, 1.02696, 4.63682 )
 environment = ExtResource( 15 )
 
 [node name="Props" type="Node" parent="."]
 
 [node name="Trees" type="Node" parent="Props"]
 
-[node name="treeDecorated" type="MeshInstance" parent="Props/Trees"]
-transform = Transform( 0.904355, 0.00172046, 0.862925, -0.00237801, 1.25, 1.39851e-10, -0.862923, -0.00164164, 0.904357, -2.91652, -0.0645622, 1.35179 )
-mesh = ExtResource( 4 )
+[node name="treePineSnow3" type="MeshInstance" parent="Props/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79087, 0, 2.0416 )
+mesh = ExtResource( 3 )
 material/0 = null
 material/1 = null
 material/2 = null
-material/3 = null
-material/4 = null
 
 [node name="treeDecorated2" type="MeshInstance" parent="Props/Trees"]
 transform = Transform( 1.22851, 0.00233713, -0.671391, -0.00266337, 1.4, -8.57222e-11, 0.67139, 0.00127726, 1.22851, 1.6163, -0.0645622, -1.01792 )
@@ -100,13 +124,6 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="treePineSnow3" type="MeshInstance" parent="Props/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42564, 0, 2.50158 )
-mesh = ExtResource( 3 )
-material/0 = null
-material/1 = null
-material/2 = null
-
 [node name="treePine" type="MeshInstance" parent="Props/Trees"]
 transform = Transform( 0.999998, 0.00190241, 0, -0.00190241, 0.999998, 0, 0, 0, 1, 2.16318, -0.0696766, 0.842652 )
 mesh = ExtResource( 5 )
@@ -143,6 +160,42 @@ mesh = ExtResource( 5 )
 material/0 = null
 material/1 = null
 
+[node name="treeDecorated" type="MeshInstance" parent="Props/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5231, 0, 1.33284 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Trees" type="StaticBody" parent="Props/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5231, 0, 1.33284 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( 0.967784, 0, -0.251782, 0, 1, 0, 0.251782, 0, 0.967784, -0.255048, 0, -0.978065 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( 0.999436, 0, 0.0335913, 0, 1, 0, -0.0335913, 0, 0.999436, -0.38711, 0, 1.70562 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( 0.997889, 0, -0.0649503, 0, 1, 0, 0.0649503, 0, 0.997889, 5.97985, 0, 2.03405 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( 0.0155931, 0, -1.27806, 0, 1, 0, 0.999926, 0, 0.0121996, 2.30147, 0, -1.91682 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( -0.809051, 0, -0.745, 0, 1, 0, 0.587819, 0, -1.03854, 4.94129, 0, -0.55848 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Props/Trees/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98481, 0, 0.268975 )
+shape = SubResource( 12 )
+
 [node name="Rocks" type="Node" parent="Props"]
 
 [node name="snowFort" type="MeshInstance" parent="Props/Rocks"]
@@ -171,47 +224,78 @@ material/1 = null
 
 [node name="Items" type="Node" parent="Props"]
 
-[node name="sled" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 0.846035, 0, -0.533127, 0, 1, 0, 0.533127, 0, 0.846035, -1.60036, 0, 2.21295 )
+[node name="Sled" type="StaticBody" parent="Props/Items"]
+transform = Transform( 0.881575, 0, -0.472043, 0, 1, 0, 0.472043, 0, 0.881575, -1.66807, 0, 1.82089 )
+
+[node name="sled" type="MeshInstance" parent="Props/Items/Sled"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 10 )
 material/0 = null
 
-[node name="present" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57223, -0.060933, 0.223516 )
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/Sled"]
+shape = SubResource( 5 )
+
+[node name="present1" type="StaticBody" parent="Props/Items"]
+transform = Transform( 0.908486, 0, 0.417915, 0, 1, 0, -0.417915, 0, 0.908486, -2.48205, 0, 0.115478 )
+
+[node name="presentWhite" type="MeshInstance" parent="Props/Items/present1"]
 mesh = ExtResource( 13 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 
-[node name="presentGreen" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99245, -0.0666327, 0.370577 )
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/present1"]
+shape = SubResource( 6 )
+
+[node name="present2" type="StaticBody" parent="Props/Items"]
+transform = Transform( 0.969471, 0, -0.245206, 0, 1, 0, 0.245206, 0, 0.969471, -2.02554, 0, 0.390378 )
+
+[node name="presentGreen2" type="MeshInstance" parent="Props/Items/present2"]
 mesh = ExtResource( 11 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 
-[node name="presentGreenLow" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77355, -0.0681495, 1.24025 )
-mesh = ExtResource( 12 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/present2"]
+shape = SubResource( 7 )
 
-[node name="presentGreenRound" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268366, -0.0694298, -0.377568 )
+[node name="present3" type="StaticBody" parent="Props/Items"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302714, 0, 0 )
+
+[node name="presentGreen3" type="MeshInstance" parent="Props/Items/present3"]
 mesh = ExtResource( 14 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
 
-[node name="present2" type="MeshInstance" parent="Props/Items"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61242, -0.0674818, 0.707053 )
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/present3"]
+shape = SubResource( 8 )
+
+[node name="present4" type="StaticBody" parent="Props/Items"]
+transform = Transform( 0.840916, 0, 0.541165, 0, 1, 0, -0.541165, 0, 0.840916, 1.13337, 0, 0.563699 )
+
+[node name="presentWhite4" type="MeshInstance" parent="Props/Items/present4"]
 mesh = ExtResource( 13 )
 material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/present4"]
+shape = SubResource( 9 )
+
+[node name="present5" type="StaticBody" parent="Props/Items"]
+transform = Transform( 0.988486, 0, -0.151313, 0, 1, 0, 0.151313, 0, 0.988486, 1.50265, 0, 1.22439 )
+
+[node name="presenGreent5" type="MeshInstance" parent="Props/Items/present5"]
+mesh = ExtResource( 12 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Props/Items/present5"]
+shape = SubResource( 10 )

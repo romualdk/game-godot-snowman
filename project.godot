@@ -14,6 +14,10 @@ config/name="Snowman"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+BackgroundMusic="*res://scenes/BackgroundMusic.tscn"
+
 [input]
 
 click={

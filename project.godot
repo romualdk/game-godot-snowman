@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 BackgroundMusic="*res://scenes/BackgroundMusic.tscn"
 
+[display]
+
+window/size/fullscreen=true
+
 [input]
 
 click={

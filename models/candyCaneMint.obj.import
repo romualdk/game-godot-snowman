@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/candyCaneMint.obj-a3e2846c852e6c925a9684c5dba8c3ed.mesh"
+
+[deps]
+
+files=[ "res://.import/candyCaneMint.obj-a3e2846c852e6c925a9684c5dba8c3ed.mesh" ]
+
+source_file="res://models/candyCaneMint.obj"
+dest_files=[ "res://.import/candyCaneMint.obj-a3e2846c852e6c925a9684c5dba8c3ed.mesh", "res://.import/candyCaneMint.obj-a3e2846c852e6c925a9684c5dba8c3ed.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

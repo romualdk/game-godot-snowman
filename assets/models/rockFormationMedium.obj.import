@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rockFormationMedium.obj-b636562c7a7ea18c12fcecb6ee7c9cf6.mesh"
+
+[deps]
+
+files=[ "res://.import/rockFormationMedium.obj-b636562c7a7ea18c12fcecb6ee7c9cf6.mesh" ]
+
+source_file="res://assets/models/rockFormationMedium.obj"
+dest_files=[ "res://.import/rockFormationMedium.obj-b636562c7a7ea18c12fcecb6ee7c9cf6.mesh", "res://.import/rockFormationMedium.obj-b636562c7a7ea18c12fcecb6ee7c9cf6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

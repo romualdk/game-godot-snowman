@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/snowFort.obj-9bab0716f8dc5bee198001bb6c036a39.mesh"
+
+[deps]
+
+files=[ "res://.import/snowFort.obj-9bab0716f8dc5bee198001bb6c036a39.mesh" ]
+
+source_file="res://assets/models/snowFort.obj"
+dest_files=[ "res://.import/snowFort.obj-9bab0716f8dc5bee198001bb6c036a39.mesh", "res://.import/snowFort.obj-9bab0716f8dc5bee198001bb6c036a39.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WinteryLoop.mp3-74be272da74c18daddb70d5a057553fc.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/WinteryLoop.mp3"
+dest_files=[ "res://.import/WinteryLoop.mp3-74be272da74c18daddb70d5a057553fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

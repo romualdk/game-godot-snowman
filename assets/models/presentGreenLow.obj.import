@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/presentGreenLow.obj-57e93551c0568486a11abd181c709802.mesh"
+
+[deps]
+
+files=[ "res://.import/presentGreenLow.obj-57e93551c0568486a11abd181c709802.mesh" ]
+
+source_file="res://assets/models/presentGreenLow.obj"
+dest_files=[ "res://.import/presentGreenLow.obj-57e93551c0568486a11abd181c709802.mesh", "res://.import/presentGreenLow.obj-57e93551c0568486a11abd181c709802.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

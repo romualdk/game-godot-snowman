@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/CallToAction/pointer.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Swipe"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureButton:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.4, 0.6 ]
+}
+
+[node name="SwipeCallToAction" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.655
+anchor_right = 0.5
+anchor_bottom = 0.655
+margin_left = -512.0
+margin_top = -393.0
+margin_right = 512.0
+margin_bottom = 207.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.4
+anchor_top = 0.667
+anchor_right = 0.6
+anchor_bottom = 0.667
+margin_left = -50.0
+margin_top = -50.2
+margin_right = 50.0
+margin_bottom = 49.8
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Swipe"
+anims/Swipe = SubResource( 1 )

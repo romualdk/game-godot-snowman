@@ -3,9 +3,10 @@ extends Spatial
 var snowball_scene
 var picked = false
 var picked_snowball
+var balls = 0
 
 func _ready():
-	snowball_scene = load("res://scenes/Snowball.tscn")
+	snowball_scene = load("res://scenes/Snowball/Snowball.tscn")
 	
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
@@ -34,6 +35,11 @@ func process_click():
 			pick(hit.collider, hit.position)
 		else:
 			spawn(hit.position)
+			balls += 1
+			
+			if balls == 1:
+				var hand = get_node("SwipeCallToAction")
+				hand.queue_free()
 
 func spawn(position):
 	var snowball = snowball_scene.instance()

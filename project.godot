@@ -16,7 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-BackgroundMusic="*res://scenes/BackgroundMusic.tscn"
+BackgroundMusic="*res://scenes/BgMusic/BgMusic.tscn"
+GUI="*res://scenes/GUI/GUI.tscn"
 
 [display]
 

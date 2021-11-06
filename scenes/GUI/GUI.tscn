@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/GUI/musicOff.png" type="Texture" id=1]
+[ext_resource path="res://scenes/GUI/musicOn.png" type="Texture" id=2]
+[ext_resource path="res://scenes/GUI/cross.png" type="Texture" id=3]
+[ext_resource path="res://scenes/GUI/GUI.gd" type="Script" id=4]
+
+[node name="GUI" type="Control"]
+anchor_left = 0.000976563
+anchor_right = 1.00098
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_bottom = 50.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="TextureButton" parent="HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="HBoxContainer"]
+margin_left = 70.0
+margin_right = 120.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 3 )
+
+[connection signal="toggled" from="HBoxContainer/Music" to="." method="_on_Music_toggled"]
+[connection signal="gui_input" from="HBoxContainer/Exit" to="." method="_on_Exit_gui_input"]

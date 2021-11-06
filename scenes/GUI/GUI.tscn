@@ -29,10 +29,9 @@ __meta__ = {
 }
 
 [node name="Music" type="TextureButton" parent="HBoxContainer"]
-margin_right = 50.0
+margin_right = 48.0
 margin_bottom = 50.0
 toggle_mode = true
-pressed = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 __meta__ = {
@@ -40,8 +39,8 @@ __meta__ = {
 }
 
 [node name="Exit" type="TextureButton" parent="HBoxContainer"]
-margin_left = 70.0
-margin_right = 120.0
+margin_left = 68.0
+margin_right = 116.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 3 )
 

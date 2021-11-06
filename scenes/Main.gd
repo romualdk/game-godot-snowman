@@ -1,13 +1,17 @@
 extends Spatial
 
-var snowball_scene
+var debug = OS.is_debug_build()
+
+onready var snowball_scene = load("res://scenes/Snowball/Snowball.tscn")
+onready var gui = get_node("GUI")
+
 var picked = false
 var picked_snowball
 var balls = 0
 
 func _ready():
-	snowball_scene = load("res://scenes/Snowball/Snowball.tscn")
-	
+	gui.setMusic(!debug)
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		process_click()

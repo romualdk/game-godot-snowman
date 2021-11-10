@@ -5,61 +5,72 @@ var debug = OS.is_debug_build()
 onready var snowball_scene = load("res://scenes/Snowball/Snowball.tscn")
 onready var gui = get_node("GUI")
 
-var picked = false
-var picked_snowball
-var balls = 0
+var snowball = null
 
 func _ready():
 	gui.setMusic(!debug)
-
+	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+	
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		process_click()
+	if event is InputEventMouseButton and event.is_action_pressed("click"):
+		on_click()
+	
+	if event is InputEventMouseButton and event.is_action_released("click"):
+		if snowball:
+			set_snowball(null)
 	
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-func _process(delta):
-	pass
+func set_snowball(new_snowball):
+	if snowball:
+		if debug:
+			snowball.set_base_material()
+		
+		snowball.should_move = false
+		snowball = false
+	
+	if new_snowball:
+		snowball = new_snowball
+		snowball.should_move = true
+		snowball.apply_central_impulse(Vector3(0.1, 0, 0))
+		
+		if debug:
+			snowball.change_color(Color(1, 0, 0))
 
-func process_click():
-	var mousePos = get_viewport().get_mouse_position()
+func hide_swipe_call_to_action():
+	var hand = get_node("SwipeCallToAction")
+	if hand:
+		hand.queue_free()
+
+func on_click():
+	hide_swipe_call_to_action()
+	
+	var hit = raycast()
+	if hit.size() != 0:
+		# snowball
+		if hit.collider.is_in_group("snowballs") == true:
+			set_snowball(hit.collider)
+		# ground
+		else:
+			spawn(hit.position)
+
+func raycast():
+	var mouse_position = get_viewport().get_mouse_position()
 	var camera = get_viewport().get_camera()
 	
-	var from = camera.project_ray_origin(mousePos)
-	var to = from + camera.project_ray_normal(mousePos) * 1000
+	var from = camera.project_ray_origin(mouse_position)
+	var to = from + camera.project_ray_normal(mouse_position) * 1000
 	
 	var space_state = get_world().get_direct_space_state()
 	var hit = space_state.intersect_ray(from, to, [self], 1)
 	
-	if hit.size() != 0:
-		if hit.collider.is_in_group("snowballs") == true:
-			pick(hit.collider, hit.position)
-		elif picked == true:
-			pick(hit.collider, hit.position)
-		else:
-			spawn(hit.position)
-			balls += 1
-			
-			if balls == 1:
-				var hand = get_node("SwipeCallToAction")
-				hand.queue_free()
+	return hit
 
 func spawn(position):
-	var snowball = snowball_scene.instance()
-	snowball.translation = position
-	add_child(snowball)
-
-func pick(snowball, position):
-	if picked == false:
-		picked = true
-		picked_snowball = snowball
-		picked_snowball.mode = RigidBody.MODE_STATIC
-	else:
-		var newPos = Vector3(position.x, position.y + 0.5, position.z)
-		picked_snowball.translation = newPos
-		picked_snowball.mode = RigidBody.MODE_RIGID
-		picked_snowball.apply_central_impulse(Vector3.ZERO)
-		picked = false
-		picked_snowball = null
+	var new_snowball = snowball_scene.instance()
+	new_snowball.translation = position
+	add_child(new_snowball)
+	
+	set_snowball(new_snowball)
 	

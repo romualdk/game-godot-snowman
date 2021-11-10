@@ -6,23 +6,43 @@ const MIN_SIZE = 0.05
 const MAX_SIZE = 0.75
 
 var size = MIN_SIZE
-var should_move = true
+var should_move = false
 
-var lastPosition = Vector3()
-var travelledDistance = 0
+var last_position = Vector3()
+var travelled_distance = 0
 
 var target = Vector3()
 
-var collisionShape
-var meshInstance
+var collision_shape
+var mesh_instance
+
+var base_material
+var color
+
+func set_base_material():
+	mesh_instance.set_surface_material(0, base_material)
+
+func change_color(new_color):
+	color = new_color
+	
+	if mesh_instance:
+		if color:
+			var new_material = base_material.duplicate()
+			new_material.albedo_color = color
+			mesh_instance.set_surface_material(0, new_material)
+		else:
+			mesh_instance.set_surface_material(0, base_material)
 
 func _ready():
-	collisionShape = get_node("CollisionShape")
-	meshInstance = get_node("MeshInstance")
+	collision_shape = get_node("CollisionShape")
+	mesh_instance = get_node("MeshInstance")
+	base_material = mesh_instance.get_surface_material(0)
 	setLastPosition()
+	
+	
 
 func setLastPosition() :
-	lastPosition = self.to_global(self.translation)
+	last_position = self.to_global(self.translation)
 
 func _process(delta):
 	if should_move == true:
@@ -30,8 +50,8 @@ func _process(delta):
 		grow()
 		setLastPosition()
 	
-	if Input.is_action_just_released("click"):
-		should_move = false
+	# if Input.is_action_just_released("click"):
+	# 	self.should_move = false
 
 func set_target():
 	var mousePos = get_viewport().get_mouse_position()
@@ -47,12 +67,12 @@ func set_target():
 		target = result.position
 
 func grow():
-	var currentPosition = self.to_global(self.translation)
-	var lastPos2D = Vector2(lastPosition.x, lastPosition.y)
-	var currentPos2D = Vector2(currentPosition.x, currentPosition.y)
-	travelledDistance += lastPos2D.distance_to(currentPos2D)
+	var current_position = self.to_global(self.translation)
+	var last_position_2d = Vector2(last_position.x, last_position.y)
+	var current_position_2d = Vector2(current_position.x, current_position.y)
+	travelled_distance += last_position_2d.distance_to(current_position_2d)
 	
-	size = travelledDistance * GROWTH
+	size = travelled_distance * GROWTH
 	
 	if size < MIN_SIZE:
 		size = MIN_SIZE
@@ -60,14 +80,14 @@ func grow():
 		size = MAX_SIZE
 
 func resize():
-	collisionShape.shape.radius = size
-	meshInstance.scale = Vector3(size, size, size)
+	collision_shape.shape.radius = size
+	mesh_instance.scale = Vector3(size, size, size)
 
 func look_follow(state, current_transform, target_position):
 	var target_dir = (target_position - current_transform.origin).normalized()
 	target_dir.y = 0
 	
-	if should_move:
+	if should_move == true:
 		state.set_linear_velocity(target_dir * SPEED)
 
 func _integrate_forces(state):

@@ -7,16 +7,33 @@ onready var gui = get_node("GUI")
 
 var snowball = null
 
+var last_click_pos = null
+var dragged = false
+
 func _ready():
 	gui.setMusic(!debug)
 	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 	
 func _input(event):
 	if event is InputEventMouseButton and event.is_action_pressed("click"):
-		on_click()
+		if snowball:
+			set_snowball(null)
+		else:
+			on_click()
+			last_click_pos = get_viewport().get_mouse_position()
 	
 	if event is InputEventMouseButton and event.is_action_released("click"):
-		if snowball:
+		
+		var click_pos = get_viewport().get_mouse_position()
+		var drag_length = click_pos.distance_to(last_click_pos)
+		var tolerance = 1
+		
+		if drag_length <= tolerance:
+			dragged = false
+		else:
+			dragged = true
+		
+		if snowball and dragged:
 			set_snowball(null)
 	
 	if Input.is_action_pressed("ui_cancel"):
@@ -33,7 +50,7 @@ func set_snowball(new_snowball):
 	if new_snowball:
 		snowball = new_snowball
 		snowball.should_move = true
-		snowball.apply_central_impulse(Vector3(0.1, 0, 0))
+		snowball.apply_central_impulse(Vector3(0, 0, 0.001))
 		
 		if debug:
 			snowball.change_color(Color(1, 0, 0))
